@@ -18,99 +18,11 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.3.5/tailwind.css"
 			defer
 		/>
+		<link rel="stylesheet" href="./styles.css" />
 		<meta
 			name="google-site-verification"
 			content="4rmX4A6iD14FzcaBfElLoJPjpHPlxmoiqyl0Vfeovyw"
 		/>
-		<style>
-			@keyframes labelPulse {
-				0% {
-					opacity: 0.6;
-				}
-				50% {
-					opacity: 0.8;
-				}
-				100% {
-					opacity: 0.6;
-				}
-			}
-			.label-loading {
-				display: inline-block;
-				width: 60px;
-				height: 20px;
-				background: #374151;
-				border-radius: 4px;
-				margin-right: 4px;
-				animation: labelPulse 1.5s infinite;
-			}
-			@keyframes labelHover {
-				0% {
-					transform: translateY(0);
-				}
-				50% {
-					transform: translateY(-2px);
-				}
-				100% {
-					transform: translateY(0);
-				}
-			}
-			span[title]:hover {
-				animation: labelHover 0.3s ease-in-out;
-				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-			}
-			#issues-list {
-				transition: min-height 0.2s ease-out, opacity 0.15s ease-out;
-				will-change: min-height, opacity;
-				backface-visibility: hidden;
-			}
-			#issues-list.updating {
-				opacity: 0.6;
-			}
-			#clear-filters {
-				opacity: 0;
-				pointer-events: none;
-				transition: opacity 0.2s ease-out;
-				position: relative;
-				height: 28px;
-				margin-top: 8px;
-				transform: translateY(5px);
-			}
-			#clear-filters.visible {
-				opacity: 1;
-				pointer-events: auto;
-				transform: translateY(0);
-			}
-			#filter-info {
-				display: inline-block;
-				opacity: 0;
-				transform: translateY(2px);
-				transform: translateZ(0); /* Hardware acceleration */
-				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-			}
-			#filter-info[style*="opacity: 1"] {
-				transform: translateY(0);
-			}
-			#crash-issues,
-			#total-issues {
-				transition: opacity 0.15s ease-out;
-			}
-
-			#crash-issues.updating,
-			#total-issues.updating {
-				opacity: 0.6;
-			}
-			#crash-issues {
-				min-width: 1.5ch;
-				display: inline-block;
-				text-align: right;
-			}
-
-			#total-issues {
-				min-width: 1.5ch;
-				display: inline-block;
-				text-align: right;
-			}
-		</style>
 	</head>
 
 	<body class="bg-gray-900">
@@ -156,24 +68,14 @@
 						<span class="text-gray-400">Filter by status:</span>
 						<div id="filter-buttons" class="flex space-x-2">
 							<span
-								class="inline-block px-3 py-1 text-xs font-medium rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg cursor-pointer"
-								style="
-									background-color: #2ea44f15;
-									color: #2ea44f;
-									border: 1px solid #2ea44f30;
-								"
+								class="filter-button open"
 								onclick="toggleFilter('open')"
 								id="filter-open"
 							>
 								open
 							</span>
 							<span
-								class="inline-block px-3 py-1 text-xs font-medium rounded-full transition-all duration-200 transform hover:scale-105 hover:shadow-lg cursor-pointer"
-								style="
-									background-color: #8957e515;
-									color: #8957e5;
-									border: 1px solid #8957e530;
-								"
+								class="filter-button closed"
 								onclick="toggleFilter('closed')"
 								id="filter-closed"
 							>
